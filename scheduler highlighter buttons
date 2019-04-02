@@ -1,0 +1,124 @@
+
+// take all prefs, compare them with the specific pref, if it's the same add a background color to the grandParent(5)
+function highlightPreference()
+{
+	var clickedPreference = this.innerHTML;
+	var getPrefs = document.getElementsByClassName('preferences-string__item');
+
+
+
+	for(let i = 0; i < getPrefs.length; i++)
+	{
+		var changeColor= function(){ 		//check the color  and change it to either red or the original one
+			if (getPrefs[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.background ===  "red")
+			{
+				getPrefs[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.background = "#1A2534";
+			}
+			else
+			{
+				getPrefs[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.style.background = "red";
+			}
+		}
+		//check if the preference is a heart
+		switch (clickedPreference == '"<span class="icons__heart"></span><span class="icons__heart"></span>"') {
+			case (this.style.color=='rgb(197, 86, 180)' && getPrefs[i].style.color =='rgb(197, 86, 180)'): //chat
+			case (this.style.color=='rgb(245, 156, 238)'&& getPrefs[i].style.color =='rgb(245, 156, 238)'): //reserve
+			case (this.style.color=='rgb(232, 147, 57)'&& getPrefs[i].style.color =='rgb(232, 147, 57)'): //tickets
+			case (this.style.color=='rgb(104, 70, 183)'&& getPrefs[i].style.color =='rgb(104, 70, 183)'): //biz1:1
+				changeColor();
+		}
+
+
+		var preferenceToCompare = getPrefs[i].innerHTML;
+		if (preferenceToCompare == clickedPreference)
+		{ changeColor();
+		}
+	}
+}
+
+// get empty header, create buttons and add actions
+
+var emptyHeader = document.getElementsByClassName('block-graph__header-empty-col');
+
+{
+	var iconChatLover = document.createElement('button');
+	var separador = document.createElement('span');
+	iconChatLover.appendChild(separador);
+	iconChatLover.addEventListener("click", highlightPreference);
+	iconChatLover.id = 'iconChatLover';
+	iconChatLover.textContent = '♥♥';
+	iconChatLover.style.color = 'rgb(197, 86, 180)';
+	emptyHeader[0].appendChild(iconChatLover);
+}
+
+{
+	var iconChatPreference = document.createElement('button');
+	iconChatPreference.addEventListener("click", highlightPreference);
+	iconChatPreference.id = 'iconChatPreference';
+	iconChatPreference.textContent = '♥';
+	iconChatPreference.style.color = 'rgb(197, 86, 180)';
+	emptyHeader[0].appendChild(iconChatPreference);
+}
+
+{
+	var iconReservePreference = document.createElement('button');
+	iconReservePreference.addEventListener("click", highlightPreference);
+	iconReservePreference.id = 'iconReservePreference';
+	iconReservePreference.textContent = '♥';
+	iconReservePreference.style.color = 'rgb(245, 156, 238)';
+	emptyHeader[0].appendChild(iconReservePreference);
+}
+
+{
+	var iconTicketPreference = document.createElement('button');
+	iconTicketPreference.addEventListener("click", highlightPreference);
+	iconTicketPreference.id = 'iconTicketPreference';
+	iconTicketPreference.textContent = '♥';
+	iconTicketPreference.style.color = 'rgb(232, 147, 57)';
+	emptyHeader[0].appendChild(iconTicketPreference);
+}
+
+{
+	var iconBusinessPreference = document.createElement('button');
+	iconBusinessPreference.addEventListener("click", highlightPreference);
+	iconBusinessPreference.id = 'iconBusinessPreference';
+	iconBusinessPreference.textContent = '♥';
+	iconBusinessPreference.style.color = 'rgb(104, 70, 183)';
+	emptyHeader[0].appendChild(iconBusinessPreference);
+}
+
+{
+	var iconPausePreference =  document.createElement('button');
+	iconPausePreference.addEventListener("click", highlightPreference);
+	iconPausePreference.id = 'iconPausePreference';
+	iconPausePreference.textContent = '❚❚✔';
+	iconPausePreference.style.color = '#979da4';
+	emptyHeader[0].appendChild(iconPausePreference);
+}
+
+{
+	var iconNoPausePreference =  document.createElement('button');
+	iconNoPausePreference.addEventListener("click", highlightPreference);
+	iconNoPausePreference.id = 'iconNoPausePreference';
+	iconNoPausePreference.textContent = '❚❚X';
+	iconNoPausePreference.style.color = '#979da4';
+	emptyHeader[0].appendChild(iconNoPausePreference);
+}
+
+{
+	var iconFullBiz =  document.createElement('button');
+	iconFullBiz.addEventListener("click", highlightPreference);
+	iconFullBiz.id = 'iconFullBiz';
+	iconFullBiz.textContent = 'FullBiz';
+	iconFullBiz.style.color = '#979da4';
+	emptyHeader[0].appendChild(iconFullBiz);
+}
+
+{
+	var iconPartBiz =  document.createElement('button');
+	iconPartBiz.addEventListener("click", highlightPreference);
+	iconPartBiz.id = 'iconPartBiz';
+	iconPartBiz.textContent = 'PartBiz';
+	iconPartBiz.style.color = '#979da4';
+	emptyHeader[0].appendChild(iconPartBiz);
+}
